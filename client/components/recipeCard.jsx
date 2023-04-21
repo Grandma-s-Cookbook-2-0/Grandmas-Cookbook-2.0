@@ -8,8 +8,9 @@ import Typography from '@mui/material/Typography';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useSelector, useDispatch } from 'react-redux';
 import MoreButton from "./recipeCardButtons/MoreButton.jsx";
-import { deleteCard } from '../slices/cardSlice';
+import { deleteCard, cardSlice } from '../slices/cardSlice';
 
+// this component renders all the cards onto the screen
 
 // const useStyles = makeStyles(theme => ({
 //   root: {
@@ -28,6 +29,8 @@ function RecipeCard({ recipe, children, type, addHandler }) {
   const dispatch = useDispatch();
 
   const [deleteButton, setDeleteButton] = React.useState(true);
+
+  // when called, a DELETE request is sent to the servers' endpoint, then returns the result of dispatching deleteCard action (returns new array with selected recipe.id deleted)
   const setDeleteButtonLogic = () => {
     setDeleteButton((prev) => !prev);
     fetch(`/recipe/delete/${recipe.id}`, {
@@ -40,6 +43,8 @@ function RecipeCard({ recipe, children, type, addHandler }) {
     .catch((err) => console.log(`Error code: ${err}`));
   };
 
+
+  // renders recipe cards, 'More', 'Delete', and the recipe image
   if (deleteButton)
     return (
       <Card sx={{ maxWidth: 600,
@@ -63,7 +68,7 @@ function RecipeCard({ recipe, children, type, addHandler }) {
           </Typography>
         </CardContent>
         <CardActions> 
-          {type === 'addForm' ? <Button color="success" onClick={addHandler(recipe)}>Add</Button> : null}
+          {type === 'cardForm' ? <Button color="success" onClick={addHandler(recipe)}>Add</Button> : null}
           <MoreButton recipe={recipe}/>
           <Button color="error"  size="small" onClick={setDeleteButtonLogic}>
             Delete

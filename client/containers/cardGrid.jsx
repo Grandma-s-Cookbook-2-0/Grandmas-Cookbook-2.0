@@ -20,8 +20,10 @@ import { init } from '../slices/cardSlice';
 import { clearKeywordResult } from '../slices/modalSlice.js';
 
 function CardGrid() {
+  // store reference into a variable to allow use in regular JS functions
   const dispatch = useDispatch();
-  // States to support live filtering of the recipes
+
+  // States to manage live filtering of the recipes
   const [filteredRecipes, setFilteredRecipes] = React.useState([]);
   const [filterKeyword, setFilterKeyword] = React.useState('');
 
@@ -31,18 +33,21 @@ function CardGrid() {
   // Handler for control the filter keyword in text field.
   const onFilterKeywordChange = (e) => setFilterKeyword(e.target.value);
 
-  // Two handlers for open and close the add recipe modal.
+  // Upon closing the modal, clears keyword results
   const handleCloseAddRecipe = () => {
     setOpenAddRecipe(false);
     dispatch(clearKeywordResult())
   };
+
+  // Updates openAddRecipe state to true upon opening modal
   const handleOpenAddRecipe = () => {
     setOpenAddRecipe(true);
   };
 
+  // Extracting recipe data from the initial state of cardSlice
     const { recipes } = useSelector(state=>state.card)
    
-
+  // Populates recipe state with fetched data
   useEffect(() => {
     fetch('/recipe/all', { method: 'GET' })
       .then((res) => {
@@ -55,14 +60,17 @@ function CardGrid() {
       .catch((err) => console.log(`Error code: ${err}`));
   }, []);
 
+  // Filter the recipes based on the value of filterKeyword
   useEffect(() => {
     setFilteredRecipes(
-      recipes.filter((recipe) => {
+      recipes.filter((recipe) => 
         // console.log(recipe)
-        return recipe.title.toLowerCase().includes(filterKeyword.toLowerCase())
-    })
+         recipe.title.toLowerCase().includes(filterKeyword.toLowerCase())
+    )
     );
   }, [recipes, filterKeyword]);
+
+
 
   return (
     <main>

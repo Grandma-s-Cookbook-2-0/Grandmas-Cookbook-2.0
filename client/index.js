@@ -8,6 +8,8 @@ import modalReducer from "./slices/modalSlice"
 
 import styles from './scss/application.scss'
 
+ 
+//  setup global store object, and register reducers we'll find elsewhere in the code
 const store = configureStore({
     reducer: { card: cardReducer, 
                 modal: modalReducer }
@@ -19,4 +21,5 @@ root.render(
         <App />    
     </Provider>
 );
+
 

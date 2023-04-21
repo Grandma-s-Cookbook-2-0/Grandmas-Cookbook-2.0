@@ -12,20 +12,25 @@ const modalSlice = createSlice({
         keywordResults: [],
     },
 
+    // updated reducers and added tempState
     reducers: {
         setUrlResult: (state, param) => {
             const { payload } = param;
-            state.urlScrape = Object.assign(payload, state.urlScrape);
+            const tempState = state
+            tempState.urlScrape = Object.assign(payload, state.urlScrape);
         },
         clearUrlResult: (state) => {
-            state.urlScrape = {};
+            const tempState = state
+            tempState.urlScrape = {};
         },
         setKeywordResult: (state, param) => {
             const { payload } = param;
-            state.keywordResults = [...state.keywordResults, ...payload]
+            const tempState = state
+            tempState.keywordResults = [...state.keywordResults, ...payload]
         },
         clearKeywordResult: (state) => {
-            state.keywordResults = [];
+            const tempState = state
+            tempState.keywordResults = [];
         },
     }
 })

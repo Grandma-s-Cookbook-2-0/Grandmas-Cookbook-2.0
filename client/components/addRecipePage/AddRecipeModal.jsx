@@ -17,6 +17,9 @@ const boxStyle = {
   p: 4,
 };
 
+// if commented out, the ENTIRE frontend disappears,
+// but it appears it's only responsible for the Get New Recipe functionality
+
 export default function AddRecipeModal({ open, handleClose }) {
   return (
     <Modal
