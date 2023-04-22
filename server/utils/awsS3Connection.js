@@ -14,6 +14,7 @@ const s3 = new S3({
 });
 
 // Upload file to S3
+// https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3/ManagedUpload.html
 exports.uploadeFileToS3 = (fileName, fileBody) => {
   const uploadParams = {
     Bucket: bucketName,
