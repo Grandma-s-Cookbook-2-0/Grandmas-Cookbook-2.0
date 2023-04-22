@@ -19,6 +19,7 @@ function UrlAddForm() {
     };
     // const { ingredientList, directions, title} = urlScrape
     
+    // 
     async function handleSubmit(e) {
         e.preventDefault();
         setQueryError(false)
@@ -67,6 +68,8 @@ function UrlAddForm() {
              {queryError ? <Alert severity="error" style={{border: 'black 5px', background: '#DDBEA9'}}>Could not complete the search</Alert> : null}
             <TextField id="urlField" label='URL' inputRef={fieldValue}/>
             <Button onClick={handleSubmit}>Submit</Button>
+
+            {/* conditional rendering to handle display of fetched website recipe data  */}
             {!urlScrape.ingredientList ? null : 
             <>
                 <Typography variant='h5'>

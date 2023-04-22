@@ -12,13 +12,16 @@ const modalSlice = createSlice({
         keywordResults: [],
     },
 
-    // updated reducers and added tempState
+    // *updated reducers and added tempState
     reducers: {
+        // updates urlScrape with recipe data from the backend
         setUrlResult: (state, param) => {
             const { payload } = param;
             const tempState = state
             tempState.urlScrape = Object.assign(payload, state.urlScrape);
         },
+
+        // resets urlScrape state
         clearUrlResult: (state) => {
             const tempState = state
             tempState.urlScrape = {};

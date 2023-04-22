@@ -45,6 +45,7 @@ function RecipeCard({ recipe, children, type, addHandler }) {
 
 
   // renders recipe cards, 'More', 'Delete', and the recipe image
+  // *(when will deleteButton be 'false'?)
   if (deleteButton)
     return (
       <Card sx={{ maxWidth: 600,
