@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "jest --run --reporter verbose",
+    "test": "jest",
     "start": "NODE_ENV=production node server/server.js",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack serve --open & NODE_ENV=development nodemon server/server.js"
