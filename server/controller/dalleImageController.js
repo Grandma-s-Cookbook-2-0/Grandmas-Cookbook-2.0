@@ -8,6 +8,7 @@ const configuration = new Configuration({
   apiKey: process.env.DALLE_KEY,
 });
 
+// create openAi client
 const openai = new OpenAIApi(configuration);
 
 const convertStrToFileName = (str) =>
@@ -16,7 +17,6 @@ const convertStrToFileName = (str) =>
 const dalleImageController = {};
 
 dalleImageController.generateImage = async (req, res, next) => {
-  console.log('reached generateImage');
   const { imagePath } = req.body;
   if (!imagePath) {
     try {
@@ -26,7 +26,8 @@ dalleImageController.generateImage = async (req, res, next) => {
         n: 1,
         size: '256x256',
       });
-
+      
+      // convert png to readable stream of byte data for S3 upload
       const imageUrl = response.data.data[0].url;
       const imageResponse = await fetch(imageUrl);
       const blob = await imageResponse.blob();
@@ -48,6 +49,7 @@ dalleImageController.generateImage = async (req, res, next) => {
         TO-DO: 1. Add userid to the imageFileName to be saved in AWS S3.
         2. Any performance optimization for the process of fetching from DALL-E url and then uploading to AWS S3.
       */
+
       const s3result = await uploadeFileToS3(imageFileName, stream);
 
       res.locals.awsimagePath = s3result.Location;
