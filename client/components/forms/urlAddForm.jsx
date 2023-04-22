@@ -73,6 +73,8 @@ function UrlAddForm() {
             <TextField id="urlField" label='URL' inputRef={fieldValue}/>
             <Button onClick={handleSubmit}>Submit</Button>
             {/* if ingredient does exist render results for client */}
+
+            {/* conditional rendering to handle display of fetched website recipe data  */}
             {!urlScrape.ingredientList ? null : 
             <>
                 <Typography variant='h5'>

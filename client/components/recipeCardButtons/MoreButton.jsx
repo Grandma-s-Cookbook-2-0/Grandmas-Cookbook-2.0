@@ -9,7 +9,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateCard } from '../../slices/cardSlice';
 import { purple } from '@mui/material/colors';
 
+// this component renders more recipes upon clicking 'More'
+
 export default function MoreButton({ recipe }) {
+  // *what are these state used for?
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
 
@@ -23,12 +26,15 @@ export default function MoreButton({ recipe }) {
 
   const dispatch = useDispatch();
 
+  // * what is this state used for?
   const [saveEditButton, setSaveEditButton] = React.useState('Edit');
   const [canEdit, setCanEdit] = React.useState(false);
 
   // const [ingredientList, setIngredientList] = React.useState(recipe.ingredientList ? recipe.ingredientList.join('\n') : '');
   // const [directions, setDirections] = React.useState(recipe.direction ? recipe.directions.join('\n') : '');
 
+
+  // manages two values of 'saveEditButton' state 
   function setSaveEditButtonLogic() {
     if (saveEditButton === 'Edit') {
       setSaveEditButton('Save');
@@ -37,6 +43,9 @@ export default function MoreButton({ recipe }) {
     }
   }
 
+  // if canEdit state is true, saveEditButton becomes 'Edit'. We send a PUT request to the backend route, sending a body that includes
+  // the old state (... recipe), the ingredientList (text), and ingredient directions. Also sends a header, and returns JSON response
+  // With the data received from the backend, we pass it into the updateCard action, and that action is dispatched.
   const canEditLogic = () => {
     if (canEdit) {
       console.log(
@@ -64,7 +73,7 @@ export default function MoreButton({ recipe }) {
           throw new Error(res.status);
         })
         .then((data) => {
-          // console.log(data);
+          console.log('here', data);
           dispatch(updateCard(data));
         })
         .catch((err) => console.log(`Error code: ${err}`));
