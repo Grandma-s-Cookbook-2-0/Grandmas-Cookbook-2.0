@@ -10,7 +10,7 @@ dalleService.generateImage = async (prompt) => {
     response_format: 'b64_json',
   });
 
-  return response.data.data[0].b64_json;
+  return response.data.data[0];
 }
 
 module.exports = dalleService;

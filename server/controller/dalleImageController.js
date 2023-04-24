@@ -10,7 +10,7 @@ dalleImageController.getImageUrl = async (req, res, next) => {
     try {
       const { title } = req.body;
       const imageFileName = convertStrToFileName(title);
-      const b64Image = await generateImage(title);
+      const b64Image = (await generateImage(title)).b64_json;
       const buffer = Buffer.from(b64Image, 'base64');
 
       const s3result = await uploadeFileToS3(imageFileName, buffer);

@@ -19,16 +19,10 @@ afterEach(() => {
   jest.clearAllMocks();
 });
 
-it('should generate a string', async () => {
-  const string = await generateImage(testPrompt);
+it('should respond with a base64 encoded string', async () => {
+  const responseObj = await generateImage(testPrompt);
 
-  expect(typeof string).toBe('string');
-})
-
-it('should not respond with a url', async () => {
-  const string = await generateImage(testPrompt);
-
-  expect(string).not.toContain('https://')
+  expect(responseObj).toHaveProperty('b64_json')
 })
 
 it('should only call dalleAPI once', async () => {
