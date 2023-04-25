@@ -16,7 +16,7 @@ router.get('/all', databaseController.getAllRecipes, (req, res, next) => {
 // Add a new recipe to the database
 router.post(
   '/add',
-  dalleImageController.generateImage,
+  dalleImageController.getImageUrl,
   databaseController.addRecipe,
   (req, res, next) => {
     res.status(200).json(res.locals);
@@ -31,7 +31,7 @@ router.put('/update/:id', databaseController.updateRecipe, (req, res, next) => {
 // Update a recipe image with a specific id in the database. The request shall have the recipe id in url parameter and recipe title in the body.
 router.put(
   '/update/image/:id',
-  dalleImageController.generateImage,
+  dalleImageController.getImageUrl,
   databaseController.updateImage,
   (req, res, next) => {
     res.status(200).json(res.locals);

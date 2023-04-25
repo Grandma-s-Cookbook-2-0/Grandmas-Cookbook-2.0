@@ -1,9 +1,14 @@
 const { createSlice } = require('@reduxjs/toolkit');
 
 // create a new slice for card
+// create a new slice for card
 const cardSlice = createSlice({
  name: 'card',
 
+ // initial state as an object
+ initialState: {
+   recipes: [],
+ },
  // initial state as an object
  initialState: {
    recipes: [],
@@ -53,7 +58,11 @@ const cardSlice = createSlice({
 })
 
 
+
 const { actions, reducer } = cardSlice;
+
+
+// redux toolkit creates actions that corresponds to names of reducer functions
 
 
 // redux toolkit creates actions that corresponds to names of reducer functions
