@@ -1,10 +1,6 @@
-const { Server } = require('https');
-const { describe } = require('node:test');
 const request = require('supertest')
-
 const app = require("../../../server/server.js")
 
-const server = 'http://localhost:3000';
 
 describe('Scraping Integration', () => {
 
@@ -25,17 +21,20 @@ describe('Scraping Integration', () => {
 
    describe('foodnetwork url', () => {
       const url = "https://www.foodnetwork.com/recipes/food-network-kitchen/the-best-chicken-and-rice-8133711"
+
+      // 
       // beforeAll(() => {
       //    request(app)
       //    .get('recipe/scrapeurl')
       //    .query({url: 'https://www.foodnetwork.com/recipes/food-network-kitchen/the-best-chicken-and-rice-8133711'})
       //    })
-      test('should respond with a 200 status', () => request(server)
+
+      test('should respond with a 200 status', () => request(app)
          .get('/recipe/scrapeurl')
          .query(`url=${url}`)
          .expect(200))
 
-      test('should retrieve the title', () => request(server)
+      test('should retrieve the title', () => request(app)
          .get('/recipe/scrapeurl')
          .query(`url=${url}`)
          .then((res) => {
@@ -43,7 +42,7 @@ describe('Scraping Integration', () => {
             expect(response).toBe('The Best Chicken and Rice')
             })
          )
-      test('ingredients should be returned in an array', () => request(server)
+      test('ingredients should be returned in an array', () => request(app)
          .get('/recipe/scrapeurl')
          .query(`url=${url}`)
          .then((res) => {
@@ -52,7 +51,7 @@ describe('Scraping Integration', () => {
             expect(response.length).toBeGreaterThan(0)
          }))
 
-      test('directions should be returned in an array', () => request(server)
+      test('directions should be returned in an array', () => request(app)
          .get('/recipe/scrapeurl')
          .query(`url=${url}`)
          .then((res) => {
@@ -65,12 +64,12 @@ describe('Scraping Integration', () => {
       describe('epicurious url', () => {
          const url = "https://www.epicurious.com/recipes/food/views/pasta-al-pomodoro-365186"
 
-         test('should respond with a 200 status', () => request(server)
+         test('should respond with a 200 status', () => request(app)
          .get('/recipe/scrapeurl')
          .query(`url=${url}`)
          .expect(200))
 
-      test('should retrieve the title', () => request(server)
+      test('should retrieve the title', () => request(app)
          .get('/recipe/scrapeurl')
          .query(`url=${url}`)
          .then((res) => {
@@ -78,7 +77,7 @@ describe('Scraping Integration', () => {
             expect(response).toBe('Pasta al Pomodoro')
             })
          )
-      test('ingredients should be returned in an array', () => request(server)
+      test('ingredients should be returned in an array', () => request(app)
          .get('/recipe/scrapeurl')
          .query(`url=${url}`)
          .then((res) => {
@@ -87,7 +86,7 @@ describe('Scraping Integration', () => {
             expect(response.length).toBeGreaterThan(0)
          }))
 
-      test('directions should be returned in an array', () => request(server)
+      test('directions should be returned in an array', () => request(app)
          .get('/recipe/scrapeurl')
          .query(`url=${url}`)
          .then((res) => {
