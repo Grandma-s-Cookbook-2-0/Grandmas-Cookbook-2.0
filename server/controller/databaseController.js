@@ -139,13 +139,6 @@ databaseController.updateImage = (req, res, next) => {
         res.locals.imagePath !== oldImagePath
       ) {
         return deleteFileFromS3(oldImagePath);
-
-        // Delete the image file on local disk. Not used.
-        /*
-        return fs.unlink(
-          path.join(__dirname, '../../public/images/', res.locals.oldimagepath)
-        );
-        */
       }
       return null;
     })
@@ -180,13 +173,6 @@ databaseController.deleteRecipe = (req, res, next) => {
         )
       ) {
         return deleteFileFromS3(imagePath);
-
-        // Delete the image file on local disk. Not used.
-        /*
-        return fs.unlink(
-          path.join(__dirname, '../../public/images/', imagePath)
-        );
-        */
       }
       return null;
     })
