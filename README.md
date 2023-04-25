@@ -1,1 +1,0 @@
-# One-Stop-Shopping
