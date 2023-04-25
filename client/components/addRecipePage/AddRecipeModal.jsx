@@ -16,7 +16,7 @@ const boxStyle = {
   boxShadow: 24,
   p: 4,
 };
-
+// renders get new recipe modal after clicking initial button
 export default function AddRecipeModal({ open, handleClose }) {
   return (
     <Modal
