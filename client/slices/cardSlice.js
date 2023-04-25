@@ -11,13 +11,23 @@ const cardSlice = createSlice({
 
    // these reducers, or functions, will take the action & old state, then update the state
    reducers: {
-       // initialize state passing in all of the recipes in database 
+        /**
+        * Initialize state passing in all of the recipes in database 
+        *
+        * @param {Object} state The state object for our app.
+        * @param {Object} param The object full of data of each food and its ingredient
+        */
        init: (state, param) => {
            const { payload } = param;
            const tempState = state;
            tempState.recipes = [...state.recipes, ...payload];
        },
-       // adds a recipe to the copy of state
+         /**
+        * Adds a recipe to the copy of state
+        *
+        * @param {Object} state The state object for our app.
+        * @param {Object} param The object full of data of each food and its ingredient
+        */
        addCard: (state, param) => {
            const { payload } = param;
            const tempState = state;
