@@ -20,6 +20,7 @@ import { init } from '../slices/cardSlice';
 import { clearKeywordResult } from '../slices/modalSlice.js';
 
 function CardGrid() {
+  // useDispatch: hook that returns reference to dispatch function from redux store
   const dispatch = useDispatch();
   // States to support live filtering of the recipes
   const [filteredRecipes, setFilteredRecipes] = React.useState([]);
@@ -40,9 +41,11 @@ function CardGrid() {
     setOpenAddRecipe(true);
   };
 
+  // useSelector: hook that extracts data from redux store state
+  // extract just the recipe state data
     const { recipes } = useSelector(state=>state.card)
    
-
+  // fetch all recipe data from database upon first render 
   useEffect(() => {
     fetch('/recipe/all', { method: 'GET' })
       .then((res) => {
@@ -50,11 +53,14 @@ function CardGrid() {
         throw new Error(res.status);
       })
       .then((data) => {
+        // initialize state with fetched recipe data
         dispatch(init(data));
       })
       .catch((err) => console.log(`Error code: ${err}`));
   }, []);
 
+  // runs on first render and every time recipes or filterkeyword changes
+  // sort through recipe to only include keyword - case insensitive
   useEffect(() => {
     setFilteredRecipes(
       recipes.filter((recipe) => {
@@ -69,11 +75,13 @@ function CardGrid() {
       <div>
         <Container maxWidth="lg">
           <Grid container spacing={2}>
+            {/* add new recipe */}
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
               <Button variant="contained" onClick={handleOpenAddRecipe} sx={{marginTop: '16px'}}>
                 Get New Recipe
               </Button>
             </Grid>
+            {/* Search input  */}
             <Grid item xs={12} sx={{ textAlign: 'center' }}>
               <TextField
                 label="Find Your Recipe"
@@ -84,9 +92,11 @@ function CardGrid() {
                 fullWidth
               />
             </Grid>
+            {/* recipe cards */}
             <Grid item xs={12}>
               <Container className="classes.cardGrid">
                 <Grid container spacing={3}>
+                  {/* iterating over filteredRecipe array to create individual recipe cards */}
                   {filteredRecipes.map((card) => (
                     <Grid item key={card.id} xs={12} sm={4} md={3}>
                       <Card
@@ -102,6 +112,7 @@ function CardGrid() {
                   ))}
                 </Grid>
               </Container>
+              {/* component that opens after clicking get new recipe button */}
               <AddRecipeModal
                 open={openAddRecipe}
                 handleClose={handleCloseAddRecipe}
