@@ -9,10 +9,6 @@ const cardSlice = createSlice({
  initialState: {
    recipes: [],
  },
- // initial state as an object
- initialState: {
-   recipes: [],
- },
 
    // these reducers, or functions, will take the action & old state, then update the state
    reducers: {
