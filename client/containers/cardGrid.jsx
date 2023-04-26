@@ -64,8 +64,9 @@ function CardGrid() {
   useEffect(() => {
     setFilteredRecipes(
       recipes.filter((recipe) => {
-        // console.log(recipe)
+        console.log(recipe)
         return recipe.title.toLowerCase().includes(filterKeyword.toLowerCase())
+        
     })
     );
   }, [recipes, filterKeyword]);
@@ -98,6 +99,7 @@ function CardGrid() {
                 <Grid container spacing={3}>
                   {/* iterating over filteredRecipe array to create individual recipe cards */}
                   {filteredRecipes.map((card) => (
+                    
                     <Grid item key={card.id} xs={12} sm={4} md={3}>
                       <Card
                         sx={{
