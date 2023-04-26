@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 import App from './App.jsx';
 import cardReducer from "./slices/cardSlice";
 import modalReducer from "./slices/modalSlice"
-
 import styles from './scss/application.scss'
+import SignInSide from './containers/authGrid.jsx';
 
 const store = configureStore({
     // passed in an object of slice reducers 
@@ -20,7 +20,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     // makes the Redux store available to nested components
     <Provider store={store}>
-        <App />    
+        <SignInSide />    
     </Provider>
 );
 

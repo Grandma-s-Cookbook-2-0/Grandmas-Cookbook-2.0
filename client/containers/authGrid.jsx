@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -24,6 +25,28 @@ function Copyright(props) {
       {'.'}
     </Typography>
   );
+}
+
+function GoogleSignInButton() {
+  return (
+    <>
+    <div id="g_id_onload"
+     data-client_id=" 793779432745-ugb11vf4u84od37ninhr618ntddar77j.apps.googleusercontent.com"
+     data-context="signin"
+     data-ux_mode="popup"
+     data-callback="test()"
+     data-auto_prompt="false" />
+
+    <div class="g_id_signin"
+     data-type="standard"
+     data-shape="pill"
+     data-theme="outline"
+     data-text="signin_with"
+     data-size="large"
+     data-locale="en"
+     data-logo_alignment="left" />
+</>
+  )
 }
 
 const theme = createTheme();
@@ -105,6 +128,7 @@ export default function SignInSide() {
               >
                 Sign In
               </Button>
+              <GoogleSignInButton />
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
