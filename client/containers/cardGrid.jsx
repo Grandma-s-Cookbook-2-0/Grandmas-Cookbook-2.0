@@ -42,13 +42,10 @@ function CardGrid() {
   const onFilterKeywordChange = (e) => setFilterKeyword(e.target.value);
 
   // Upon closing the modal, clears keyword results
-  // Upon closing the modal, clears keyword results
   const handleCloseAddRecipe = () => {
     setOpenAddRecipe(false);
     dispatch(clearKeywordResult())
   };
-
-  // Updates openAddRecipe state to true upon opening modal
 
   // Updates openAddRecipe state to true upon opening modal
   const handleOpenAddRecipe = () => {
@@ -59,7 +56,6 @@ function CardGrid() {
   // Extracting recipe data from the initial state of cardSlice
     const { recipes } = useSelector(state=>state.card)
    
-  // Populates recipe state with fetched data
   // Populates recipe state with fetched data
   useEffect(() => {
     fetch('/recipe/all', { method: 'GET' })

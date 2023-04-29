@@ -9,9 +9,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateCard } from '../../slices/cardSlice';
 import { purple } from '@mui/material/colors';
 
-// this component renders more recipes upon clicking 'More'
-
-
 /**
  * // This component renders more recipes upon clicking 'More'
  *
@@ -21,13 +18,11 @@ import { purple } from '@mui/material/colors';
  */
 export default function MoreButton({ recipe }) {
   // *what are these state used for?
-  // *what are these state used for?
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
 
   const dispatch = useDispatch();
 
-  // * what is this state used for?
   // * what is this state used for?
   const [saveEditButton, setSaveEditButton] = React.useState('Edit');
   const [canEdit, setCanEdit] = React.useState(false);
