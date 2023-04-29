@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client'
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import { createBrowserRouter, RouterProvider} from "react-router-dom"
 import cardReducer from "./slices/cardSlice";
 import modalReducer from "./slices/modalSlice"
 import styles from './scss/application.scss'
 import SignInSide from './containers/authGrid.jsx';
-import { createBrowserRouter, RouterProvider} from "react-router-dom"
 import App from './App.jsx';
  
 //  Setup global store object, and register reducers we'll find elsewhere in the code.

@@ -49,10 +49,7 @@ function GoogleSignInButton() {
   // </>
 
   // Code from PassPortJs
-  <>
-  <h1>Sign In</h1>
-  <a className="button-google" href="/auth/google">Sign in with Google</a>
-  </>
+      <a className="button-google" href="/auth/google">Sign in with Google</a>
   )
 }
 
@@ -78,7 +75,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: '/Users/sharonchen/Desktop/CodeSmith PTRI10/One-Stop-Shopping/client/images/apple_pie.jpeg',
+            backgroundImage: '/Users/nestorcayanan/Desktop/Codesmith/Mid Portion/Iteration Project/Grandmas-Cookbook-2.0/client/images/apple_pie.jpeg',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
