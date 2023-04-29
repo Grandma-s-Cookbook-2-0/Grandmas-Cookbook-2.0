@@ -73,7 +73,7 @@ function RecipeCard({ recipe, children, type, addHandler }) {
             Delete
           </Button>
         </CardActions>
-        {/* {children} */}
+        {children}
       </Card>
     );
 }

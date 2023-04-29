@@ -10,10 +10,8 @@ import styles from './scss/application.scss'
 
  
 //  Setup global store object, and register reducers we'll find elsewhere in the code.
- 
-//  setup global store object, and register reducers we'll find elsewhere in the code
 const store = configureStore({
-    // passed in an object of slice reducers 
+    // Passed in an object of slice reducers 
     reducer: { card: cardReducer, 
                 modal: modalReducer }
 });

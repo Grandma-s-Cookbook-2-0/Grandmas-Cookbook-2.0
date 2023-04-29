@@ -11,7 +11,7 @@ const modalSlice = createSlice({
         keywordResults: [],
     },
 
-    // *updated reducers and added tempState
+    // *Updated reducers and added tempState
     // These reducers, or functions, will take the action & old state, 
     // then update the state
     reducers: {
@@ -27,9 +27,6 @@ const modalSlice = createSlice({
             tempState.urlScrape = Object.assign(payload, state.urlScrape);
         },
 
-        // resets urlScrape state
-
-        // 
         /**
         * Resets urlScrape state
         *
