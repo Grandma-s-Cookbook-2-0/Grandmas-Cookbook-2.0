@@ -79,10 +79,7 @@ function CardGrid() {
   useEffect(() => {
     setFilteredRecipes(
       recipes.filter((recipe) => 
-      recipes.filter((recipe) => 
         // console.log(recipe)
-         recipe.title.toLowerCase().includes(filterKeyword.toLowerCase())
-    )
          recipe.title.toLowerCase().includes(filterKeyword.toLowerCase())
     )
     );
