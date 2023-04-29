@@ -19,9 +19,20 @@ import AddRecipeModal from '../components/addRecipePage/AddRecipeModal.jsx';
 import { init } from '../slices/cardSlice';
 import { clearKeywordResult } from '../slices/modalSlice.js';
 
+  /**
+  * Runs various logic to generate data for when the cardGrid renders
+  * 
+  * @return {JSX} Everything else after the title of the app to be rendered
+   */
 function CardGrid() {
   // useDispatch: hook that returns reference to dispatch function from redux store
+<<<<<<< HEAD
+=======
+  // store reference into a variable to allow use in regular JS functions
+>>>>>>> dev
   const dispatch = useDispatch();
+
+  // States to manage live filtering of the recipes
 
   // States to manage live filtering of the recipes
   const [filteredRecipes, setFilteredRecipes] = React.useState([]);
@@ -43,12 +54,12 @@ function CardGrid() {
   const handleOpenAddRecipe = () => {
     setOpenAddRecipe(true);
   };
-
-  // useSelector: hook that extracts data from redux store state
-  // extract just the recipe state data
-    const { recipes } = useSelector(state=>state.card)
    
   // fetch all recipe data from database upon first render 
+  // Extracting recipe data from the initial state of cardSlice
+    const { recipes } = useSelector(state=>state.card)
+   
+  // Populates recipe state with fetched data
   useEffect(() => {
     fetch('/recipe/all', { method: 'GET' })
       .then((res) => {
@@ -62,16 +73,22 @@ function CardGrid() {
       .catch((err) => console.log(`Error code: ${err}`));
   }, []);
 
+  // Filter the recipes based on the value of filterKeyword
   // runs on first render and every time recipes or filterkeyword changes
   // sort through recipe to only include keyword - case insensitive
   useEffect(() => {
     setFilteredRecipes(
       recipes.filter((recipe) => 
+      recipes.filter((recipe) => 
         // console.log(recipe)
+         recipe.title.toLowerCase().includes(filterKeyword.toLowerCase())
+    )
          recipe.title.toLowerCase().includes(filterKeyword.toLowerCase())
     )
     );
   }, [recipes, filterKeyword]);
+
+
 
 
 

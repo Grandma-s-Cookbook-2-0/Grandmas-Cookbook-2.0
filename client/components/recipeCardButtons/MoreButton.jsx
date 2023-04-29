@@ -10,21 +10,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateCard } from '../../slices/cardSlice';
 import { purple } from '@mui/material/colors';
 
-// this component renders recipe info upon clicking 'More'
-
+/**
+ * // This component renders more recipes upon clicking 'More'
+ *
+ * @param {Object} recipe Object of recipe with their corresponding data
+ * 
+ * @return {JSX} The pop up window to be rendered when you click more on a recipe
+ */
 export default function MoreButton({ recipe }) {
 
   // *what are these state used for?
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
-
-  //   useEffect(() => {
-  //     if (page) dispatch(getPosts(page));
-  // }, [canEdit, page]);
-
-  //   useEffect(() =>
-  //     if (page) dispatch(getPosts(page));
-  // }, [dispatch, page]);
 
   const dispatch = useDispatch();
 
@@ -32,11 +29,7 @@ export default function MoreButton({ recipe }) {
   const [saveEditButton, setSaveEditButton] = React.useState('Edit');
   const [canEdit, setCanEdit] = React.useState(false);
 
-  // const [ingredientList, setIngredientList] = React.useState(recipe.ingredientList ? recipe.ingredientList.join('\n') : '');
-  // const [directions, setDirections] = React.useState(recipe.direction ? recipe.directions.join('\n') : '');
-
-
-  // manages two values of 'saveEditButton' state 
+  // Manages two values of 'saveEditButton' state 
   function setSaveEditButtonLogic() {
     if (saveEditButton === 'Edit') {
       setSaveEditButton('Save');
@@ -45,9 +38,13 @@ export default function MoreButton({ recipe }) {
     }
   }
 
-  // if canEdit state is true, saveEditButton becomes 'Edit'. We send a PUT request to the backend route, sending a body that includes
-  // the old state (... recipe), the ingredientList (text), and ingredient directions. Also sends a header, and returns JSON response
-  // With the data received from the backend, we pass it into the updateCard action, and that action is dispatched.
+  /**
+ *If canEdit state is true, saveEditButton becomes 'Edit'. We send a PUT request to the backend route, sending a body that includes
+  the old state (... recipe), the ingredientList (text), and ingredient directions. Also sends a header, and returns JSON response
+  With the data received from the backend, we pass it into the updateCard action, and that action is dispatched.
+ * 
+ * @return {JSX} The modal with recipe and ingredient list
+ */
   const canEditLogic = () => {
     if (canEdit) {
       console.log(
@@ -76,18 +73,19 @@ export default function MoreButton({ recipe }) {
         })
         .then((data) => {
           console.log('here', data);
+          console.log('here', data);
           dispatch(updateCard(data));
         })
         .catch((err) => console.log(`Error code: ${err}`));
     } else setSaveEditButton('Save');
     setCanEdit((state) => !state);
   };
-
+  // Event listener to handle opening the modal and setting the scrolling functionality
   const handleClickOpen = (scrollType) => () => {
     setOpen(true);
     setScroll(scrollType);
   };
-
+  // Event listener to handle closing the modal
   const handleClose = () => {
     setOpen(false);
   };

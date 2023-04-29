@@ -3,9 +3,9 @@ import { Typography, AppBar, Container, Toolbar, MuiPaper } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardGrid from './containers/cardGrid.jsx';
 
-// generate MUI theme by returning theme object
+// Generate MUI theme by returning theme object
 const theme = createTheme({
-  // customize theme configuration variables
+  // Customize theme configuration variables
   palette: {
     primary: {
       main: '#FFE8D6',
@@ -27,7 +27,7 @@ const theme = createTheme({
       }
     }}
 });
-
+// Renders app with MUI styling 
 function App() {
   return (
     // ThemeProvider from MUI : inject theme into entire application (relies on the context feature of React)

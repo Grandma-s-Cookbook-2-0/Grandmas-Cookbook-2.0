@@ -9,38 +9,36 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useSelector, useDispatch } from 'react-redux';
 import MoreButton from "./recipeCardButtons/MoreButton.jsx";
 import { deleteCard, cardSlice } from '../slices/cardSlice';
+import { deleteCard, cardSlice } from '../slices/cardSlice';
 
-// this component renders all the cards onto the screen
-
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     "& .MuiPaper-root": {
-//       background: 'black'
-//     }
-//   }
-// }));
-
-
+/**
+ * This component renders all the cards onto the screen
+ *
+ * @param {Object} recipe Each meal with their recipes
+ * @param {} children ?
+ * @param {Object} type a tasty type (Look at tastyQueryTypes.js)
+ * @param {Function} addHandler An event listener function in which it will maka a fetch request to add recipe and dispatch the action to create a recipe card
+ * @return {JSX} The recipe cards to be rendered
+ */
 function RecipeCard({ recipe, children, type, addHandler }) {
-  // need to loop through the the fetch data
-  // console.log('type', type)
-  // const [saveEdit, setSaveEdit] = useToggle();
-
   const dispatch = useDispatch();
 
   const [deleteButton, setDeleteButton] = React.useState(true);
-
-  // when called, a DELETE request is sent to the servers' endpoint, then returns the result of dispatching deleteCard action (returns new array with selected recipe.id deleted)
+  /**
+  * When called, a DELETE request is sent to the servers' endpoint, 
+  * then returns the result of dispatching deleteCard action (returns new array with selected recipe.id deleted)
+  */
+  // 
   const setDeleteButtonLogic = () => {
     setDeleteButton((prev) => !prev);
     fetch(`/recipe/delete/${recipe.id}`, {
       method: 'DELETE',
     })
-    .then((res) => {
-      if (res.ok) return dispatch(deleteCard(recipe));
-      throw new Error(res.status);
-    })
-    .catch((err) => console.log(`Error code: ${err}`));
+      .then((res) => {
+        if (res.ok) return dispatch(deleteCard(recipe));
+        throw new Error(res.status);
+      })
+      .catch((err) => console.log(`Error code: ${err}`));
   };
 
 
@@ -48,14 +46,15 @@ function RecipeCard({ recipe, children, type, addHandler }) {
   // *(when will deleteButton be 'false'?)
   if (deleteButton)
     return (
-      <Card sx={{ maxWidth: 600,
+      <Card sx={{
+        maxWidth: 600,
       }}
-      style={{ border: "none", background:'#DDBEA9' }}
-       >
+        style={{ border: "none", background: '#DDBEA9' }}
+      >
         <CardMedia
           component="img"
           alt="recipe image"
-          sx={{width: '258px', height: '256px',  alignItems:'flex-end'}}
+          sx={{ width: '258px', height: '256px', alignItems: 'flex-end' }}
           // height="140"
           image={recipe.imagePath}
         />

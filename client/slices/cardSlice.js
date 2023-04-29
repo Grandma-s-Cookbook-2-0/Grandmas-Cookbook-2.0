@@ -1,30 +1,45 @@
 const { createSlice } = require('@reduxjs/toolkit');
 
-// create a new slice for card
+// Create a new slice for card
 const cardSlice = createSlice({
  name: 'card',
 
- // initial state as an object
+ // Initial state as an object
  initialState: {
    recipes: [],
  },
 
-   // these reducers, or functions, will take the action & old state, then update the state
+   // These reducers, or functions, will take the action & old state, then update the state
    reducers: {
-       // initialize state passing in all of the recipes in database 
+        /**
+        * Initialize state passing in all of the recipes in database 
+        *
+        * @param {Object} state The state object for our app.
+        * @param {Object} param The object full of data of each food and its ingredient
+        */
        init: (state, param) => {
            const { payload } = param;
            const tempState = state;
            tempState.recipes = [...state.recipes, ...payload];
        },
-       // adds a recipe to the copy of state
+         /**
+        * Adds a recipe to the copy of state
+        *
+        * @param {Object} state The state object for our app.
+        * @param {Object} param The object full of data of each food and its ingredient
+        */
        addCard: (state, param) => {
            const { payload } = param;
            const tempState = state;
            tempState.recipes = [...state.recipes, payload]
        },
-       // iterates over recipes in state to find and return already updated recipe in the database. All other recipes are returned as is.
-       // *returned value is used to create a new array
+        /**
+        * Iterates over recipes in state to find and return already updated recipe in the database. 
+        * All other recipes are returned as is.Returned value is used to create a new array
+        *
+        * @param {Object} state The state object for our app.
+        * @param {Object} param The object full of data of each food and its ingredient
+        */
        updateCard: (state, param) => {
            const { payload } = param;
            const tempState = state;
@@ -33,7 +48,13 @@ const cardSlice = createSlice({
                return recipe;
            })
        },
-       // returns a new recipes array, filtering out the element(s) that were deleted.
+       /**
+       * Previous comment for team to review: Returns a new recipes array, filtering out the element(s) that were deleted.
+       * Filters out the element(s) that were deleted from the database in the recipes array
+       *
+       * @param {Object} state The state object for our app.
+       * @param {Object} param The object full of data of each food and its ingredient
+       */
        deleteCard: (state, param) => {
            const { payload } = param;
            const tempState = state;
@@ -43,9 +64,9 @@ const cardSlice = createSlice({
 })
 
 
+
 const { actions, reducer } = cardSlice;
 
-
-// redux toolkit creates actions that corresponds to names of reducer functions
+// Redux toolkit creates actions that corresponds to names of reducer functions
 export const { init, addCard, updateCard, deleteCard } = actions;
 export default reducer
