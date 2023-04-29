@@ -27,6 +27,7 @@ const boxStyle = {
  * 
  * @return {JSX} The modal component
  */
+// renders get new recipe modal after clicking initial button
 export default function AddRecipeModal({ open, handleClose }) {
   return (
     <Modal

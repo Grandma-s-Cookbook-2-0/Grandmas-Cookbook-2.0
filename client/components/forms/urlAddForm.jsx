@@ -24,11 +24,11 @@ function UrlAddForm() {
     const handleOpen = () => {
         setOpen(true);
     };
-
     async function handleSubmit(e) {
         e.preventDefault();
         setQueryError(false)
         handleOpen();
+        // fetch data from url 
         await fetch(`http://localhost:3000/recipe/scrapeUrl/?url=${fieldValue.current.value}`)
             .then((res) => {
                 if (res.ok) return res.json();
@@ -44,6 +44,7 @@ function UrlAddForm() {
             })
     };
 
+    // adds recipe to recipe list
     function addHandler(e) {
         e.preventDefault();
         setQueryError(false);
@@ -72,34 +73,41 @@ function UrlAddForm() {
 
     return (
         <Box>
-            {queryError ? <Alert severity="error" style={{ border: 'black 5px', background: '#DDBEA9' }}>Could not complete the search</Alert> : null}
-            <TextField id="urlField" label='URL' inputRef={fieldValue} />
+            {/* alerts user if url is invalid */}
+             {queryError ? <Alert severity="error" style={{border: 'black 5px', background: '#DDBEA9'}}>Could not complete the search</Alert> : null}
+            <TextField id="urlField" label='URL' inputRef={fieldValue}/>
             <Button onClick={handleSubmit}>Submit</Button>
-            {!urlScrape.ingredientList ? null :
-                <>
-                    <Typography variant='h5'>
-                        {urlScrape.title}
-                    </Typography>
-                    <Typography variant='h6'>
-                        ingredients
-                    </Typography>
-                    {!urlScrape.ingredientList ? null : urlScrape.ingredientList.map((item, i = 0) => {
-                        i += 1;
-                        return <li key={`ingredient${i}`}>{item}</li>
-                    }
-                    )}
-                    <Typography variant='h6'>
-                        directions
-                    </Typography>
-                    {!urlScrape.directions ? null : urlScrape.directions.map((item, i = 0) => {
-                        i += 1;
-                        return <li key={`direction${i}`}>{item}</li>
-                    })
-                    }
-                    <Button onClick={addHandler}>Add to my Recipes</Button>
-                </>
-            }
+            {/* if ingredient does exist render results for client */}
 
+            {/* conditional rendering to handle display of fetched website recipe data  */}
+            {!urlScrape.ingredientList ? null : 
+            <>
+                <Typography variant='h5'>
+                    {urlScrape.title}
+                </Typography>
+                <Typography variant='h6'>
+                    ingredients
+                </Typography>
+                {/* if ingredients exist create a list by maping over them */}
+                { !urlScrape.ingredientList ? null : urlScrape.ingredientList.map((item, i=0) => {
+                    i += 1;
+                    return <li key={`ingredient${i}`}>{item}</li> 
+                } 
+                )}
+                <Typography variant='h6'>
+                    directions
+                </Typography>
+                {/* if directions exist, map over them to create list */}
+                { !urlScrape.directions ? null : urlScrape.directions.map((item, i = 0) => {
+                    i += 1;
+                    return <li key={`direction${i}`}>{item}</li> 
+                    }) 
+                }
+                {/* button to add recipe to recipe list */}
+                <Button onClick={addHandler}>Add to my Recipes</Button>   
+            </>
+            }
+            {/* component during load */}
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={open}

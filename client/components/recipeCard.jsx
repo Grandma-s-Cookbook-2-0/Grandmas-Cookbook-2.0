@@ -66,10 +66,10 @@ function RecipeCard({ recipe, children, type, addHandler }) {
             {recipe.title}
           </Typography>
         </CardContent>
-        <CardActions>
+        <CardActions> 
           {type === 'cardForm' ? <Button color="success" onClick={addHandler(recipe)}>Add</Button> : null}
-          <MoreButton recipe={recipe} />
-          <Button color="error" size="small" onClick={setDeleteButtonLogic}>
+          <MoreButton recipe={recipe}/>
+          <Button color="error"  size="small" onClick={setDeleteButtonLogic}>
             Delete
           </Button>
         </CardActions>

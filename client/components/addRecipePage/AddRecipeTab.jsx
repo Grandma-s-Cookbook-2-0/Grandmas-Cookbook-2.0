@@ -16,7 +16,7 @@ import APIAddForm from '../forms/ApiAddForm.jsx';
  */
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
+  // create component that create a tab panel
   return (
     <div
       role="tabpanel"
@@ -48,6 +48,7 @@ export default function BasicTabs() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        {/* tabs that adds recipes */}
         <Tabs
           value={value}
           onChange={handleChange}

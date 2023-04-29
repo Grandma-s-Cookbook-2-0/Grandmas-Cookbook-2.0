@@ -11,6 +11,7 @@ const modalSlice = createSlice({
         keywordResults: [],
     },
 
+    // *updated reducers and added tempState
     // These reducers, or functions, will take the action & old state, 
     // then update the state
     reducers: {
@@ -24,7 +25,11 @@ const modalSlice = createSlice({
             const { payload } = param;
             const tempState = state
             tempState.urlScrape = Object.assign(payload, state.urlScrape);
+            const tempState = state
+            tempState.urlScrape = Object.assign(payload, state.urlScrape);
         },
+
+        // resets urlScrape state
 
         // 
         /**
@@ -33,6 +38,8 @@ const modalSlice = createSlice({
         * @param {Object} state The state object for our app.
         */
         clearUrlResult: (state) => {
+            const tempState = state
+            tempState.urlScrape = {};
             const tempState = state
             tempState.urlScrape = {};
         },
@@ -45,6 +52,8 @@ const modalSlice = createSlice({
         setKeywordResult: (state, param) => {
             const { payload } = param;
             const tempState = state
+            tempState.keywordResults = [...state.keywordResults, ...payload]
+            const tempState = state
             console.log(state);
             tempState.keywordResults = [...state.keywordResults, ...payload]
         },
@@ -54,6 +63,8 @@ const modalSlice = createSlice({
         * @param {Object} state The state object for our app.
         */
         clearKeywordResult: (state) => {
+            const tempState = state
+            tempState.keywordResults = [];
             const tempState = state
             tempState.keywordResults = [];
         },

@@ -18,11 +18,13 @@ import { purple } from '@mui/material/colors';
  * @return {JSX} The pop up window to be rendered when you click more on a recipe
  */
 export default function MoreButton({ recipe }) {
+  // *what are these state used for?
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
 
   const dispatch = useDispatch();
 
+  // * what is this state used for?
   const [saveEditButton, setSaveEditButton] = React.useState('Edit');
   const [canEdit, setCanEdit] = React.useState(false);
 
