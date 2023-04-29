@@ -73,9 +73,8 @@ const scrapeFoodnetwork = (req, res, next) => {
 
 module.exports = (req, res, next) => {
   const { url } = req.query;
-
   res.locals.url = url;
-
+  console.log(res.locals.url)
   if (url.includes('epicurious')) {
     scrapeEpicurious(req, res, next);
   } else if (url.includes('foodnetwork')) {

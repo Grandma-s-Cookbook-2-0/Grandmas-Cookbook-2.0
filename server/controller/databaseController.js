@@ -5,6 +5,8 @@ const { deleteFileFromS3 } = require('../utils/awsS3Connection');
 
 const databaseController = {};
 
+// accepts an array of DB row objects and converts the keys referenced within the function body to camelCase
+// returns an array of DB row objects
 const camelCaseTheKey = (databaseRowsArray) => {
   const camelCaseArray = databaseRowsArray.map((dbObj) => {
     const ccObj = {};
@@ -26,6 +28,7 @@ const camelCaseTheKey = (databaseRowsArray) => {
   return camelCaseArray;
 };
 
+// returns an array of DB row objects for recipes table
 databaseController.getAllRecipes = (req, res, next) => {
   const allRecipeQuery = `SELECT * FROM recipes`;
   db.query(allRecipeQuery)
@@ -51,7 +54,6 @@ databaseController.addRecipe = (req, res, next) => {
     tastyId,
     imagePath,
   } = req.body;
-  console.log('reach addRecipe');
   const addRecipeQuery = `INSERT INTO recipes (url, title, description, ingredientList, directions, tastyId, imagePath) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
   // To also cover Tasty API entries where description can be long.
   const values = [
@@ -137,13 +139,6 @@ databaseController.updateImage = (req, res, next) => {
         res.locals.imagePath !== oldImagePath
       ) {
         return deleteFileFromS3(oldImagePath);
-
-        // Delete the image file on local disk. Not used.
-        /*
-        return fs.unlink(
-          path.join(__dirname, '../../public/images/', res.locals.oldimagepath)
-        );
-        */
       }
       return null;
     })
@@ -178,13 +173,6 @@ databaseController.deleteRecipe = (req, res, next) => {
         )
       ) {
         return deleteFileFromS3(imagePath);
-
-        // Delete the image file on local disk. Not used.
-        /*
-        return fs.unlink(
-          path.join(__dirname, '../../public/images/', imagePath)
-        );
-        */
       }
       return null;
     })
