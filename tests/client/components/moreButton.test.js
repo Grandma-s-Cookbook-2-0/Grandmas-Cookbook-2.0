@@ -11,11 +11,8 @@ test('dialog opens when More button is clicked and title of the recipe is displa
   render(<MoreButton recipe={{ title: 'Test Recipe', ingredientList: ['Ingredient 1', 'Ingredient 2'], directions: ['Step 1', 'Step 2'] }} />);
   
   // ACT
-  // searches for button element with name "More"
   const moreButton = getByRole('button', { name: 'More' });
-  // when user clicks on button
   userEvent.click(moreButton);
-  // stores text element in variable
   const dialogTitle = getByText('Test Recipe');
 
   // ASSERT
