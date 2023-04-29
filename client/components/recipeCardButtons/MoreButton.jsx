@@ -5,6 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Checkbox from '@mui/material/Checkbox';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateCard } from '../../slices/cardSlice';
 import { purple } from '@mui/material/colors';
@@ -17,6 +18,7 @@ import { purple } from '@mui/material/colors';
  * @return {JSX} The pop up window to be rendered when you click more on a recipe
  */
 export default function MoreButton({ recipe }) {
+
   // *what are these state used for?
   const [open, setOpen] = React.useState(false);
   const [scroll, setScroll] = React.useState('paper');
@@ -88,6 +90,7 @@ export default function MoreButton({ recipe }) {
     setOpen(false);
   };
 
+  // focus on description container anytime the user clicks on it
   const descriptionElementRef = React.useRef(null);
   React.useEffect(() => {
     if (open) {
@@ -112,28 +115,41 @@ export default function MoreButton({ recipe }) {
       >
         <DialogTitle id="scroll-dialog-title">{recipe.title}</DialogTitle>
         <DialogContent dividers={scroll === 'paper'}>
+          {/* This dialog is for the ingredients content */}
+          <DialogTitle>Ingredients</DialogTitle>
+          {recipe.ingredientList && recipe.ingredientList.map((ingredient) => (
           <DialogContentText
-            id={`${recipe.id}ingredientText`}
+          id={`${recipe.id}ingredientText`}
             ref={descriptionElementRef}
             tabIndex={-1}
             contentEditable={canEdit.toString()}
             // multiline
             style={{ whiteSpace: 'pre-line' }}
           >
-            {recipe.ingredientList ? recipe.ingredientList.join('\n') : null}
+            <Checkbox /> {ingredient}
           </DialogContentText>
+          ))}
         </DialogContent>
+          
 
+        {/* This content is for the directions */}
         <DialogContent dividers={scroll === 'paper'}>
+          <DialogTitle>Directions</DialogTitle>
           <DialogContentText
             id={`${recipe.id}directions`}
             ref={descriptionElementRef}
             tabIndex={-1}
             contentEditable={canEdit.toString()}
             // multiline
-            style={{ whiteSpace: 'pre-line' }}
+            style={{ whiteSpace: 'pre-line'}}
           >
             {recipe.directions ? recipe.directions.join('\n') : null}
+            {recipe.directions && recipe.directions.map((direction) => (
+              <>
+              {direction}
+              <br /><br />
+            </>
+          ))}
           </DialogContentText>
         </DialogContent>
 
