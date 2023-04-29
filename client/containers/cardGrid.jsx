@@ -26,10 +26,7 @@ import { clearKeywordResult } from '../slices/modalSlice.js';
    */
 function CardGrid() {
   // useDispatch: hook that returns reference to dispatch function from redux store
-<<<<<<< HEAD
-=======
   // store reference into a variable to allow use in regular JS functions
->>>>>>> dev
   const dispatch = useDispatch();
 
   // States to manage live filtering of the recipes
