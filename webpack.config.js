@@ -32,17 +32,17 @@ module.exports = {
           'css-loader',
         ],
       },
-      {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: 'svg-url-loader',
-            options: {
-              limit: 10000,
-            },
-          },
-        ],
-      },
+      // {
+      //   test: /\.svg$/,
+      //   use: [
+      //     {
+      //       loader: 'svg-url-loader',
+      //       options: {
+      //         limit: 10000,
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [

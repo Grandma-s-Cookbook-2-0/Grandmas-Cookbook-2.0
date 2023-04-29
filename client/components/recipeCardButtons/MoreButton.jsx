@@ -102,7 +102,7 @@ export default function MoreButton({ recipe }) {
   }, [open]);
 
   return (
-    <div>
+    <div color='#DDBEA9'>
       <Button color="success" onClick={handleClickOpen('paper')}>
         More
       </Button>
@@ -112,11 +112,12 @@ export default function MoreButton({ recipe }) {
         scroll={scroll}
         aria-labelledby="scroll-dialog-title"
         aria-describedby="scroll-dialog-description"
+        
       >
-        <DialogTitle id="scroll-dialog-title">{recipe.title}</DialogTitle>
+        <DialogTitle id="scroll-dialog-title" sx= {{textAlign:"center"}}>{recipe.title}</DialogTitle>
         <DialogContent dividers={scroll === 'paper'}>
           {/* This dialog is for the ingredients content */}
-          <DialogTitle>Ingredients</DialogTitle>
+          <DialogTitle sx= {{textAlign:"center"}}>Ingredients</DialogTitle>
           {recipe.ingredientList && recipe.ingredientList.map((ingredient) => (
           <DialogContentText
           id={`${recipe.id}ingredientText`}
@@ -134,7 +135,7 @@ export default function MoreButton({ recipe }) {
 
         {/* This content is for the directions */}
         <DialogContent dividers={scroll === 'paper'}>
-          <DialogTitle>Directions</DialogTitle>
+          <DialogTitle sx= {{textAlign:"center"}}>Directions</DialogTitle>
           <DialogContentText
             id={`${recipe.id}directions`}
             ref={descriptionElementRef}

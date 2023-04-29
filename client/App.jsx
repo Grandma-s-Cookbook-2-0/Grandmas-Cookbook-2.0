@@ -3,6 +3,7 @@ import { Typography, Grid } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import grandMaLogo from './images/GrandmaLogo.svg';
 
+
 import CardGrid from './containers/cardGrid.jsx';
 
 // Generate MUI theme by returning theme object
@@ -31,8 +32,10 @@ const theme = createTheme({
         root: {
           'background': '#DDBEA9',
         }
+        
       }
-    }}
+      
+    }},
 });
 // Renders app with MUI styling 
 function App() {
@@ -53,7 +56,7 @@ function App() {
           <Grid item xs={5} align='left'> 
             <img src={grandMaLogo} alt="" />
           </Grid>
-          
+          {/* <img src={applePie} alt="" /> */}
         </Grid>
 
         <CardGrid />
