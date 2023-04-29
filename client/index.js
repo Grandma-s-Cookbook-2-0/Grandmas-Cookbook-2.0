@@ -8,15 +8,22 @@ import modalReducer from "./slices/modalSlice"
 
 import styles from './scss/application.scss'
 
+ 
+//  Setup global store object, and register reducers we'll find elsewhere in the code.
 const store = configureStore({
+    // Passed in an object of slice reducers 
     reducer: { card: cardReducer, 
                 modal: modalReducer }
 });
 
+// root: is a pointer to the top-level data structure
 const root = ReactDOM.createRoot(document.getElementById('root'));
+// render: defines the React component that should be rendered
 root.render(
+    // makes the Redux store available to nested components
     <Provider store={store}>
         <App />    
     </Provider>
 );
+
 
