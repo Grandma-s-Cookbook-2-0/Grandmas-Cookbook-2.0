@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Typography, AppBar, Container, Toolbar, MuiPaper } from '@mui/material';
+import { Typography, Grid } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import grandMaLogo from './images/GrandmaLogo.svg';
+
+
 import CardGrid from './containers/cardGrid.jsx';
 
 // Generate MUI theme by returning theme object
@@ -8,7 +11,7 @@ const theme = createTheme({
   // Customize theme configuration variables
   palette: {
     primary: {
-      main: '#FFE8D6',
+      main: '#332F2A',
     },
     secondary: {
       main: '#DDBEA9',
@@ -17,6 +20,11 @@ const theme = createTheme({
       main: '#CB997E',
     },
   },
+  typography: {
+    fontFamily: [
+      'Montserrat', 
+    ].join(','),
+  },
   components: { 
     MuiPaper: { 
       // Overrides MUI style but not sure where it is being used
@@ -24,27 +32,36 @@ const theme = createTheme({
         root: {
           'background': '#DDBEA9',
         }
+        
       }
-    }}
+      
+    }},
 });
 // Renders app with MUI styling 
 function App() {
   return (
     // ThemeProvider from MUI : inject theme into entire application (relies on the context feature of React)
     <ThemeProvider theme={theme}>
-      <header>
-        {/* Typography: MUI component that uses typographic scale with limited set of type sizes */}
-        <Typography align="center" variant="h1" color="primary">
-          {"Grandma's Cookbook"}
-        </Typography>
-        {/* Confusion: not sure why it is called actionHeader */}
-        <div className="actionHeader">
-          <Typography variant="h2" align="center" color="primary">
-            Recipes
-          </Typography>
-        </div>
-      </header>
-      <CardGrid />
+     
+        <Grid container xs={12} sx={{marginTop: 10, justifyContent: 'center',alignItems: 'center'}} >
+          <Grid item xs={7} >
+            <Typography align="right" variant="h1" color="primary">
+              GRANDMA'S 
+            </Typography>
+            <Typography align="right" variant="h1" color="primary" sx={{fontFamily: 'Charmonman', m:2}}>
+              Cookbook
+            </Typography>
+            
+          </Grid>
+          <Grid item xs={5} align='left'> 
+            <img src={grandMaLogo} alt="" />
+          </Grid>
+          {/* <img src={applePie} alt="" /> */}
+        </Grid>
+
+        <CardGrid />
+     
+      
     </ThemeProvider>
   );
 }

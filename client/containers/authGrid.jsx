@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import applePie from '../images/apple_pie.jpeg'
 
 
 function Copyright(props) {
@@ -67,23 +68,14 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      
+      <Grid container component="main" >
         <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: '/Users/nestorcayanan/Desktop/Codesmith/Mid Portion/Iteration Project/Grandmas-Cookbook-2.0/client/images/apple_pie.jpeg',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={6} sx={{objectFit:'cover'}}>
+          <img src={applePie} alt=""  />
+        </Grid>
+        
+        <Grid item xs={12} sm={6}  component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,

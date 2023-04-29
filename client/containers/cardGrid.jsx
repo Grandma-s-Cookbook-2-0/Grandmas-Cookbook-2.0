@@ -75,10 +75,9 @@ function CardGrid() {
   // sort through recipe to only include keyword - case insensitive
   useEffect(() => {
     setFilteredRecipes(
-      recipes.filter((recipe) => 
-        // console.log(recipe)
-         recipe.title.toLowerCase().includes(filterKeyword.toLowerCase())
-    )
+      recipes.filter((recipe) => {
+        return recipe.title.toLowerCase().includes(filterKeyword.toLowerCase())
+    })
     );
   }, [recipes, filterKeyword]);
 
@@ -110,24 +109,18 @@ function CardGrid() {
             </Grid>
             {/* recipe cards */}
             <Grid item xs={12}>
-              <Container className="classes.cardGrid">
-                <Grid container spacing={3}>
+              
+                <Grid container spacing={3} sx={{marginTop:2}}>
                   {/* iterating over filteredRecipe array to create individual recipe cards */}
                   {filteredRecipes.map((card) => (
-                    <Grid item key={card.id} xs={12} sm={4} md={3}>
-                      <Card
-                        sx={{
-                          height: '100%',
-                          display: 'flex',
-                          flexDirection: 'column',
-                        }}
-                      >
+                    <Grid item key={card.id} xs={12} sm={4} md={4}>
+                    
                         <RecipeCard recipe={card} title={card.title} image={card.imagePath} />
-                      </Card>
+                     
                     </Grid>
                   ))}
                 </Grid>
-              </Container>
+             
               {/* component that opens after clicking get new recipe button */}
               <AddRecipeModal
                 open={openAddRecipe}
