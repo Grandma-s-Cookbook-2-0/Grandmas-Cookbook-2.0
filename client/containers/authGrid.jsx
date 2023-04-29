@@ -29,23 +29,30 @@ function Copyright(props) {
 
 function GoogleSignInButton() {
   return (
-    <>
-    <div id="g_id_onload"
-     data-client_id=" 793779432745-ugb11vf4u84od37ninhr618ntddar77j.apps.googleusercontent.com"
-     data-context="signin"
-     data-ux_mode="popup"
-     data-callback="test()"
-     data-auto_prompt="false" />
+    // Code from Google Dev Site
+  //   <>
+  //   <div id="g_id_onload"
+  //    data-client_id="793779432745-ugb11vf4u84od37ninhr618ntddar77j.apps.googleusercontent.com"
+  //    data-context="signin"
+  //    data-ux_mode="popup"
+  //    data-callback="test()" // LOGIC TO GO TO THE BACK END
+  //    data-auto_prompt="false" />
 
-    <div class="g_id_signin"
-     data-type="standard"
-     data-shape="pill"
-     data-theme="outline"
-     data-text="signin_with"
-     data-size="large"
-     data-locale="en"
-     data-logo_alignment="left" />
-</>
+  //   <div className="g_id_signin"
+  //    data-type="standard"
+  //    data-shape="pill"
+  //    data-theme="outline"
+  //    data-text="signin_with"
+  //    data-size="large"
+  //    data-locale="en"
+  //    data-logo_alignment="left" />
+  // </>
+
+  // Code from PassPortJs
+  <>
+  <h1>Sign In</h1>
+  <a className="button-google" href="/auth/google">Sign in with Google</a>
+  </>
   )
 }
 
