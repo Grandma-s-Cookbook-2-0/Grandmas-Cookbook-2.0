@@ -9,7 +9,6 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { useSelector, useDispatch } from 'react-redux';
 import MoreButton from "./recipeCardButtons/MoreButton.jsx";
 import { deleteCard, cardSlice } from '../slices/cardSlice';
-import { deleteCard, cardSlice } from '../slices/cardSlice';
 
 /**
  * This component renders all the cards onto the screen

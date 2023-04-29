@@ -43,8 +43,8 @@ app.use('/recipe', recipeRouter);
 
 app.get('/protected', passport.authenticate(
   'google', {
-    successRedirect:'http://localhost:8080/',
-    failureRedirect:'http:///localhost:8080'
+    successRedirect:'http://localhost:8080/home',
+    failureRedirect:'http:///localhost:8080/'
   }
 )
   )
