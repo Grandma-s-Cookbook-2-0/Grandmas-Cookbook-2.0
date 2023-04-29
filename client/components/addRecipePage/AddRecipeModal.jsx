@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Modal from '@mui/material/Modal';
 import AddRecipeTab from './AddRecipeTab.jsx';
-
+// For MUI styling 
 const boxStyle = {
   position: 'absolute',
   top: '50%',
@@ -17,9 +17,16 @@ const boxStyle = {
   p: 4,
 };
 
-// if commented out, the ENTIRE frontend disappears,
+// If commented out, the ENTIRE frontend disappears,
 // but it appears it's only responsible for the Get New Recipe functionality
-
+/**
+ * // Exports a component that renders the modal for adding a recipe
+ *
+ * @param {Boolean} open Boolean value that is being passed as a prop
+ * @param {Function} handleClose An event listener that is being passed as a prop
+ * 
+ * @return {JSX} The modal component
+ */
 export default function AddRecipeModal({ open, handleClose }) {
   return (
     <Modal

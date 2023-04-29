@@ -8,7 +8,12 @@ import { useDispatch } from 'react-redux'
 import UrlAddForm from '../forms/urlAddForm.jsx';
 import { clearKeywordResult } from '../../slices/modalSlice.js';
 import APIAddForm from '../forms/ApiAddForm.jsx';
-
+/**
+ * This component handles the tabs functionality for when adding recipes
+ *
+ * @param {Object} props
+ * @return {JSX} 
+ */
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -20,11 +25,17 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
+      {console.log(children)}
       {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
-
+/**
+ * This component handles the tabs functionality for when adding recipes
+ *
+ * @param {Object} props
+ * @return {JSX} The JSX for the tabs when adding a recipe
+ */
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const dispatch = useDispatch();

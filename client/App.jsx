@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Typography, AppBar, Container, Toolbar, MuiPaper } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CardGrid from './containers/cardGrid.jsx';
-
+// MUI styling
 const theme = createTheme({
   palette: {
     primary: {
@@ -24,7 +24,7 @@ const theme = createTheme({
       }
     }}
 });
-
+// Renders app with MUI styling 
 function App() {
   return (
     <ThemeProvider theme={theme}>

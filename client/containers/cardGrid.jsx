@@ -19,6 +19,11 @@ import AddRecipeModal from '../components/addRecipePage/AddRecipeModal.jsx';
 import { init } from '../slices/cardSlice';
 import { clearKeywordResult } from '../slices/modalSlice.js';
 
+  /**
+  * Runs various logic to generate data for when the cardGrid renders
+  * 
+  * @return {JSX} Everything else after the title of the app to be rendered
+   */
 function CardGrid() {
   // store reference into a variable to allow use in regular JS functions
   const dispatch = useDispatch();
