@@ -25,8 +25,6 @@ const modalSlice = createSlice({
             const { payload } = param;
             const tempState = state
             tempState.urlScrape = Object.assign(payload, state.urlScrape);
-            const tempState = state
-            tempState.urlScrape = Object.assign(payload, state.urlScrape);
         },
 
         // resets urlScrape state
@@ -40,8 +38,6 @@ const modalSlice = createSlice({
         clearUrlResult: (state) => {
             const tempState = state
             tempState.urlScrape = {};
-            const tempState = state
-            tempState.urlScrape = {};
         },
         /**
         * Assigning keyword state the collection of cards shown when searched
@@ -53,9 +49,6 @@ const modalSlice = createSlice({
             const { payload } = param;
             const tempState = state
             tempState.keywordResults = [...state.keywordResults, ...payload]
-            const tempState = state
-            console.log(state);
-            tempState.keywordResults = [...state.keywordResults, ...payload]
         },
         /**
         * Clears keyword state
@@ -63,8 +56,6 @@ const modalSlice = createSlice({
         * @param {Object} state The state object for our app.
         */
         clearKeywordResult: (state) => {
-            const tempState = state
-            tempState.keywordResults = [];
             const tempState = state
             tempState.keywordResults = [];
         },

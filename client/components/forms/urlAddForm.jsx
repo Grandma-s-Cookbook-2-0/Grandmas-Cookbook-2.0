@@ -24,6 +24,13 @@ function UrlAddForm() {
     const handleOpen = () => {
         setOpen(true);
     };
+/**
+ * // This component renders more recipes upon clicking 'More'
+ *
+ * @param {Object} recipe Object of recipe with their corresponding data
+ * 
+ * @return {JSX} The pop up window to be rendered when you click more on a recipe
+ */
     async function handleSubmit(e) {
         e.preventDefault();
         setQueryError(false)
@@ -44,7 +51,12 @@ function UrlAddForm() {
             })
     };
 
-    // adds recipe to recipe list
+    /**
+ * // Event handler function to add recipe card to recipe list
+ *
+ * @param {Object} e Event variable used for preventDefault method.
+ * 
+ */
     function addHandler(e) {
         e.preventDefault();
         setQueryError(false);
