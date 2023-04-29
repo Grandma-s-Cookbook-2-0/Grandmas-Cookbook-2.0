@@ -43,6 +43,19 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
+            },
+          },
+        ],
+      },
       // Asset Modules setup to store font files separately in the font subdirectory
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -89,6 +102,7 @@ module.exports = {
     proxy: {
       '/recipe': 'http://localhost:3000',
       '/tasty': 'http://localhost:3000',
+      '/auth/google': 'http://localhost:3000'
     },
   },
 };

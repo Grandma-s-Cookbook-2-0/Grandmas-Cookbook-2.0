@@ -2,6 +2,7 @@ const router = require('express').Router();
 const scrapingController = require('../controller/scrapingController');
 const databaseController = require('../controller/databaseController');
 const dalleImageController = require('../controller/dalleImageController');
+const shoppingListController = require('../controller/shoppingListController');
 
 // Scrape info for a specific URL provided
 router.get('/scrapeurl', scrapingController, (req, res, next) => {
@@ -49,6 +50,10 @@ router.delete(
 
 router.get('/userrecipe/:id', databaseController.getUserRecipe, (req, res) => {
   res.status(200).json(res.locals);
+})
+
+router.get('/shoppinglist', shoppingListController.getShoppingList,  (req, res) => {
+  res.status(200).json(res.locals.shoppingList);
 })
 
 module.exports = router;

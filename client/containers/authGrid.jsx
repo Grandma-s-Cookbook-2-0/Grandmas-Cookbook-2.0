@@ -12,6 +12,8 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import applePie from '../images/apple_pie.jpeg'
+
 
 function Copyright(props) {
   return (
@@ -24,6 +26,32 @@ function Copyright(props) {
       {'.'}
     </Typography>
   );
+}
+
+function GoogleSignInButton() {
+  return (
+    // Code from Google Dev Site
+  //   <>
+  //   <div id="g_id_onload"
+  //    data-client_id="793779432745-ugb11vf4u84od37ninhr618ntddar77j.apps.googleusercontent.com"
+  //    data-context="signin"
+  //    data-ux_mode="popup"
+  //    data-callback="test()" // LOGIC TO GO TO THE BACK END
+  //    data-auto_prompt="false" />
+
+  //   <div className="g_id_signin"
+  //    data-type="standard"
+  //    data-shape="pill"
+  //    data-theme="outline"
+  //    data-text="signin_with"
+  //    data-size="large"
+  //    data-locale="en"
+  //    data-logo_alignment="left" />
+  // </>
+
+  // Code from PassPortJs
+      <a className="button-google" href="/auth/google">Sign in with Google</a>
+  )
 }
 
 const theme = createTheme();
@@ -40,23 +68,14 @@ export default function SignInSide() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      
+      <Grid container component="main" >
         <CssBaseline />
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            backgroundImage: '/Users/sharonchen/Desktop/CodeSmith PTRI10/One-Stop-Shopping/client/images/apple_pie.jpeg',
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: (t) =>
-              t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={12} sm={6} sx={{objectFit:'cover'}}>
+          <img src={applePie} alt=""  />
+        </Grid>
+        
+        <Grid item xs={12} sm={6}  component={Paper} elevation={6} square>
           <Box
             sx={{
               my: 8,
@@ -105,6 +124,7 @@ export default function SignInSide() {
               >
                 Sign In
               </Button>
+              <GoogleSignInButton />
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">
