@@ -25,6 +25,8 @@ const modalSlice = createSlice({
             const { payload } = param;
             const tempState = state
             tempState.urlScrape = Object.assign(payload, state.urlScrape);
+            const tempState = state
+            tempState.urlScrape = Object.assign(payload, state.urlScrape);
         },
 
         /**
@@ -33,6 +35,8 @@ const modalSlice = createSlice({
         * @param {Object} state The state object for our app.
         */
         clearUrlResult: (state) => {
+            const tempState = state
+            tempState.urlScrape = {};
             const tempState = state
             tempState.urlScrape = {};
         },
@@ -44,6 +48,8 @@ const modalSlice = createSlice({
         */
         setKeywordResult: (state, param) => {
             const { payload } = param;
+            const tempState = state
+            tempState.keywordResults = [...state.keywordResults, ...payload]
             const tempState = state
             tempState.keywordResults = [...state.keywordResults, ...payload]
         },
